@@ -28,6 +28,10 @@ inputs:
     description: "tfmake summary subcommand options."
     required: false
 
+  pull_request_number:
+    description: "Pull Request number."
+    required: false
+
   token:
     description: "GitHub token."
     required: true
