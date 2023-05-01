@@ -17,7 +17,7 @@ tfmake summary "${TFMAKE_SUMMARY_OPTIONS:-""}"
 tfmake gh-step-summary
 
 if [[ -n ${PULL_REQUEST_NUMBER} ]]; then
-  tfmake gh-pr-comment "${PULL_REQUEST_NUMBER}"
+  tfmake gh-pr-comment --number "${PULL_REQUEST_NUMBER}"
 fi
 
 exit ${exit_code}
