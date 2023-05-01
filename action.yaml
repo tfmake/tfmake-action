@@ -1,0 +1,52 @@
+name: "tfmake"
+description: "tfmake GitHub Action."
+
+author: tfmake
+
+branding:
+  icon: "box"
+  color: "green"
+
+inputs:
+  tfmake_context:
+    description: "ftmake context."
+    required: true
+
+  files:
+    description: "Files to touch."
+    required: true
+
+  tfmake_run_mode:
+    description: "tfmake run mode"
+    required: false
+
+  tfmake_summary_title:
+    description: "tfmake summary title."
+    required: false
+
+  tfmake_summary_options:
+    description: "tfmake summary subcommand options."
+    required: false
+
+  token:
+    description: "GitHub token."
+    required: true
+
+  working_directory:
+    description: "Working directory."
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/action.sh
+      shell: bash
+      working-directory: ${{ inputs.working_directory }}
+      env:
+        TFMAKE_CONTEXT: ${{ inputs.tfmake_context }}
+        FILES: ${{ inputs.files }}
+        TFMAKE_RUN_MODE: ${{ inputs.tfmake_run_mode }}
+        TFMAKE_SUMMARY_TITLE: ${{ inputs.tfmake_summary_title }}
+        TFMAKE_SUMMARY_OPTIONS: ${{ inputs.tfmake_summary_options }}
+        PULL_REQUEST_NUMBER: ${{ inputs.pull_request_number }}
+        GH_TOKEN: ${{ inputs.token }}
