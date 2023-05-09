@@ -4,7 +4,7 @@ tfmake GitHub Action.
 
 ## Requirements
 
-tfmake >= v0.1.0-alpha.7
+tfmake >= v0.1.0-alpha.10
 
 ## License
 
