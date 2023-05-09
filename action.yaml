@@ -12,6 +12,11 @@ inputs:
     description: "ftmake context."
     required: true
 
+  tfmake_log_grouping:
+    description: "tfmake log grouping."
+    required: false
+    default: true
+
   files:
     description: "Files to touch."
     required: true
@@ -48,6 +53,7 @@ runs:
       working-directory: ${{ inputs.working_directory }}
       env:
         TFMAKE_CONTEXT: ${{ inputs.tfmake_context }}
+        TFMAKE_LOG_GROUPING: ${{ inputs.tfmake_log_grouping }}
         FILES: ${{ inputs.files }}
         TFMAKE_RUN_MODE: ${{ inputs.tfmake_run_mode }}
         TFMAKE_SUMMARY_TITLE: ${{ inputs.tfmake_summary_title }}
