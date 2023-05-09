@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-export SUMMARY_TITLE="${TFMAKE_SUMMARY_TITLE:-""}"
-
 {
   set -e
 
