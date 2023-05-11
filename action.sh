@@ -2,11 +2,11 @@
 
 {
   set -e
-
   tfmake context "${TFMAKE_CONTEXT}"
   tfmake init
   tfmake touch -f "${FILES}"
   tfmake makefile
+  set +e
 }
 
 tfmake run "${TFMAKE_RUN_MODE:-""}"
