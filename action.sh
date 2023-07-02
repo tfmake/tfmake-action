@@ -3,7 +3,13 @@
 {
   set -e
   tfmake context "${TFMAKE_CONTEXT}"
-  tfmake init
+
+  if [[ -n "${IGNORE_MODULES}" ]]; then
+    tfmake init -i "${IGNORE_MODULES}"
+  else
+    tfmake init
+  fi
+
   tfmake touch -f "${FILES}"
   tfmake makefile
   set +e

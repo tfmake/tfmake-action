@@ -17,6 +17,10 @@ inputs:
     required: false
     default: true
 
+  ignore_modules:
+    description: "List of modules to ignore."
+    required: false
+
   files:
     description: "Files to touch."
     required: true
@@ -54,6 +58,7 @@ runs:
       env:
         TFMAKE_CONTEXT: ${{ inputs.tfmake_context }}
         TFMAKE_LOG_GROUPING: ${{ inputs.tfmake_log_grouping }}
+        IGNORE_MODULES: ${{ inputs.ignore_modules }}
         FILES: ${{ inputs.files }}
         TFMAKE_RUN_MODE: ${{ inputs.tfmake_run_mode }}
         TFMAKE_SUMMARY_TITLE: ${{ inputs.tfmake_summary_title }}
