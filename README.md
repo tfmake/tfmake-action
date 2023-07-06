@@ -107,7 +107,7 @@ jobs:
       uses: tfmake/tfmake-action@main
       with:
         tfmake_context: plan
-        tfmake_run_mode: all
+        tfmake_run_mode: --all
         tfmake_summary_title: "Terraform Plan"
 ```
 
