@@ -4,13 +4,17 @@
   set -e
   tfmake context "${TFMAKE_CONTEXT}"
 
-  if [[ -n "${IGNORE_MODULES}" ]]; then
-    tfmake init -i "${IGNORE_MODULES}"
-  else
+  if [[ -z "${TFMAKE_IGNORE_MODULES:""}" ]]; then
     tfmake init
+  else
+    tfmake init -i "${IGNORE_MODULES}"
   fi
 
-  tfmake touch -f "${FILES}"
+  # run mode "all" does not require touch
+  if [[ -n "${TOUCH_FILES}" ]]; then
+    tfmake touch -f "${TOUCH_FILES}"
+  fi
+
   tfmake makefile
   set +e
 }
@@ -18,8 +22,7 @@
 tfmake run "${TFMAKE_RUN_MODE:-""}"
 exit_code=$?
 
-tfmake mermaid
-tfmake summary "${TFMAKE_SUMMARY_OPTIONS:-""}"
+tfmake summary
 tfmake gh-step-summary
 
 if [[ -n ${PULL_REQUEST_NUMBER} ]]; then

@@ -9,7 +9,7 @@ branding:
 
 inputs:
   tfmake_context:
-    description: "ftmake context."
+    description: "The execution context, plan or apply."
     required: true
 
   tfmake_log_grouping:
@@ -21,9 +21,9 @@ inputs:
     description: "List of modules to ignore."
     required: false
 
-  files:
-    description: "Files to touch."
-    required: true
+  touch_files:
+    description: "List of files to touch."
+    required: false
 
   tfmake_run_mode:
     description: "tfmake run mode"
@@ -33,17 +33,14 @@ inputs:
     description: "tfmake summary title."
     required: false
 
-  tfmake_summary_options:
-    description: "tfmake summary options."
-    required: false
-
   pull_request_number:
     description: "Pull Request number."
     required: false
 
   token:
-    description: "GitHub token."
+    description: "GITHUB_TOKEN or Personal Access Token (PAT)."
     required: true
+    default: ${{ github.token }}
 
   working_directory:
     description: "Working directory."
@@ -59,9 +56,8 @@ runs:
         TFMAKE_CONTEXT: ${{ inputs.tfmake_context }}
         TFMAKE_LOG_GROUPING: ${{ inputs.tfmake_log_grouping }}
         IGNORE_MODULES: ${{ inputs.ignore_modules }}
-        FILES: ${{ inputs.files }}
+        TOUCH_FILES: ${{ inputs.touch_files }}
         TFMAKE_RUN_MODE: ${{ inputs.tfmake_run_mode }}
         TFMAKE_SUMMARY_TITLE: ${{ inputs.tfmake_summary_title }}
-        TFMAKE_SUMMARY_OPTIONS: ${{ inputs.tfmake_summary_options }}
         PULL_REQUEST_NUMBER: ${{ inputs.pull_request_number }}
         GH_TOKEN: ${{ inputs.token }}
