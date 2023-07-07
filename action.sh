@@ -4,7 +4,7 @@
   set -e
   tfmake context "${TFMAKE_CONTEXT}"
 
-  if [[ -z "${TFMAKE_IGNORE_MODULES:""}" ]]; then
+  if [[ -z "${IGNORE_MODULES:-""}" ]]; then
     tfmake init
   else
     tfmake init -i "${IGNORE_MODULES}"
